@@ -4,39 +4,39 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
-	<title>商品新規</title>
+	<title th:text="#{label.app.new.title}"></title>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/items">商品管理デモ</a>
+				<a class="navbar-brand" href="/items" th:text="#{label.app.top.header}"></a>
 			</div>
 		</div>
     </nav>
 	<div class="container">
 		<div class="card card-primary mb-3">
 	  			<div class="card-header">
-	  				<h5 class="card-title">商品新規</h5>
+	  				<h5 class="card-title" th:text="#{label.app.new.title}"></h5>
 	  			</div>
 				<div class="card-body">
 	      			<form th:method="post" th:action="@{/items}" th:object="${item}">
 	        			<div class="form-group row">
-	          				<label class="col-md-2 control-label">商品名</label>
+	          				<label class="col-md-2 control-label" th:text="#{label.app.new.list1}"></label>
 	          				<div class="col-md-10">
 	            				<input class="form-control" type="text" name="name" th:value="*{name}" />
 	            				<div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 	          				</div>
 	        			</div>
 	        			<div class="form-group row">
-	          				<label class="col-md-2 control-label">価格</label>
+	          				<label class="col-md-2 control-label" th:text="#{label.app.new.list2}"></label>
 	          				<div class="col-md-10">
 	            				<input class="form-control" type="text" name="price" th:value="*{price}"/>
 	            				<div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
 	          				</div>
 	        			</div>
 	        			<div class="form-group row">
-	          				<label class="col-md-2 control-label">ベンダー</label>
+	          				<label class="col-md-2 control-label" th:text="#{label.app.new.list3}"></label>
 	          				<div class="col-md-10">
 	            				<input class="form-control" type="text" name="vendor" th:value="*{vendor}" />
 	            				<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div>
@@ -44,7 +44,7 @@
 	        			</div>
 	        			<div class="form-group row">
 	          				<div class="offset-md-2 col-md-10">
-	            				<button class="btn btn-primary">新規</button>
+	            				<button class="btn btn-primary" th:text="#{label.app.new.buttion}"></button>
 	          				</div>
 	        			</div>
 	      		</form>
