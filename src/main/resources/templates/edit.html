@@ -1,54 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/css/bootstrap.min.css" />
-	<title th:text="#{label.app.edit.title}"></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<title th:text="#{label.app.edit.title}"></title>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/items" th:text="#{label.app.top.header}"></a>
+				<a class="navbar-brand" href="/items"
+					th:text="#{label.app.top.header}"></a>
 			</div>
 		</div>
-    </nav>
+
+	</nav>
 	<div class="container">
 		<div class="card card-primary mb-3">
-  			<div class="card-header">
-  				<h5 class="card-title" th:text="#{label.app.edit.title}"></h5>
-  			</div>
+			<div class="card-header">
+				<h5 class="card-title" th:text="#{label.app.edit.title}"></h5>
+			</div>
 			<div class="card-body">
-				<form th:action="@{/items/{id}(id=*{id})}" th:method="put" th:object="${item}">
-	        		<div class="form-group row">
-	          			<label class="col-md-2 control-label" th:text="#{label.app.new.list1}"></label>
-	          			<div class="col-md-10">
-	            			<input class="form-control" type="text" th:field="*{name}" />
-	            			<div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-	          			</div>
-	        		</div>
-	        		<div class="form-group row">
-	          			<label class="col-md-2 control-label" th:text="#{label.app.new.list2}"></label>
-	          			<div class="col-md-10">
-	            			<input class="form-control" type="text" th:field="*{price}" />
-	            			<div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-	          			</div>
-	        		</div>
-	        		<div class="form-group row">
-	          			<label class="col-md-2 control-label" th:text="#{label.app.new.list3}"></label>
-	          			<div class="col-md-10">
-	            			<input class="form-control" type="text" th:field="*{vendor}" />
-	            			<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div>
-	          			</div>
-	        		</div>
-	        		<div class="form-group row">
-	          			<div class="offset-md-2 col-md-9">
-	            			<button class="btn btn-primary" th:text="#{label.app.edit.button1}"></button>
-	            		</div>
-	          		</div>
-	        	</div>
-	      	</form>
+				<form th:action="@{/items/{id}(id=*{id})}" th:method="put"
+					th:object="${item}">
+					<div class="form-group row">
+						<label class="col-md-2 control-label"
+							th:text="#{label.app.new.list1}"></label>
+						<div class="col-md-10">
+							<select class="form-control" id="category" name="category">
+								<option th:each="category : ${categories}"
+									th:value="${category.value}" th:text="${category.value}"
+									th:selected="${category.value} == *{category}"></option>
+							</select>
+							<div class="text-danger" th:if="${#fields.hasErrors('category')}"
+								th:errors="*{category}"></div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2 control-label"
+							th:text="#{label.app.new.list4}"></label>
+						<div class="col-md-10">
+							<input class="form-control" type="date"  th:field="*{date}" />
+							<div class="text-danger" th:if="${#fields.hasErrors('date')}"
+								th:errors="*{date}"></div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2 control-label"
+							th:text="#{label.app.new.list2}"></label>
+						<div class="col-md-10">
+							<input class="form-control" type="text" th:field="*{expenses}" />
+							<div class="text-danger" th:if="${#fields.hasErrors('expenses')}"
+								th:errors="*{expenses}"></div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2 control-label"
+							th:text="#{label.app.new.list3}"></label>
+						<div class="col-md-10">
+							<input class="form-control" type="text" th:field="*{memo}" />
+							<div class="text-danger" th:if="${#fields.hasErrors('memo')}"
+								th:errors="*{memo}"></div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-md-2 col-md-9">
+							<button class="btn btn-primary"
+								th:text="#{label.app.edit.button1}"></button>
+						</div>
+					</div>
+			</div>
+			</form>
 		</div>
 	</div>
 	<script src="/js/jquery-3.4.1.min"></script>

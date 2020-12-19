@@ -23,15 +23,19 @@
 		        <div th:object="${item}">
 		        	<div class="form-group row">
 		        		<label class="col-md-2" th:text="#{label.app.new.list1}"></label>
-						<div class="col-md-10" th:text="*{name}"></div>
+						<div class="col-md-10" th:text="*{category}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label" th:text="#{label.app.new.list4}"></label>
+		            	<div class="col-md-10 form-control-static" th:text="*{date}"></div>
 		          	</div>
 		          	<div class="form-group row">
 		            	<label class="col-md-2 control-label" th:text="#{label.app.new.list2}"></label>
-		            	<div class="col-md-10 form-control-static" th:text="*{price}"></div>
+		            	<div class="col-md-10 form-control-static" th:text="*{expenses}"></div>
 		          	</div>
 		          	<div class="form-group row">
 		            	<label class="col-md-2 control-label" th:text="#{label.app.new.list3}"></label>
-		            	<div class="col-md-10 form-control-static" th:text="*{vendor}"></div>
+		            	<div class="col-md-10 form-control-static" th:text="*{memo}"></div>
 		          	</div>
 				</div>
 			</div>

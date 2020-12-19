@@ -9,15 +9,19 @@ public class Item {
 
 	private Long id;
 
-	@NotBlank(message = "商品名を記入してください。")
-	private String name;
+	@NotBlank(message = "カテゴリは必須です。")
+	private String category;
+	
+	private String[] categories;
+	
+	private String date;
 
 	@Min(value = 10, message = "10以上の数値を入力してください。")
-	@Max(value = 10000, message = "10000以下の数値を入力してください。")
-	private float price;
+	@Max(value = 100000, message = "100000以下の数値を入力してください。")
+	private float expenses;
 
 	@Size(max = 50, message = "ベーダー名は50文字を超えないでください。")
-	private String vendor;
+	private String memo;
 
 	public Long getId() {
 		return id;
@@ -27,28 +31,44 @@ public class Item {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	public String[] getCategories() {
+		return categories;
 	}
 
-	public float getPrice() {
-		return price;
+	public void setCategories(String[] categories) {
+		this.categories = categories;
+	}
+	
+	public String getDate() {
+		return date;
 	}
 
-	public void setPrice(float price) {
-		this.price = price;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
-	public String getVendor() {
-		return vendor;
+	public float getExpenses() {
+		return expenses;
 	}
 
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
+	public void setExpenses(float expenses) {
+		this.expenses = expenses;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
 }

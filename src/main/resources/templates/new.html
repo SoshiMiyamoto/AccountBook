@@ -7,6 +7,16 @@
 	<title th:text="#{label.app.new.title}"></title>
 </head>
 <body>
+	<script type="text/javascript">
+		window.onload = function () {
+		    var today = new Date();
+		    today.setDate(today.getDate());
+		    var yyyy = today.getFullYear();
+		    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+		    var dd = ("0"+today.getDate()).slice(-2);
+		    document.getElementById("today").value=yyyy+'-'+mm+'-'+dd;
+		}
+	</script>
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
@@ -24,27 +34,38 @@
 	        			<div class="form-group row">
 	          				<label class="col-md-2 control-label" th:text="#{label.app.new.list1}"></label>
 	          				<div class="col-md-10">
-	            				<input class="form-control" type="text" name="name" th:value="*{name}" />
-	            				<div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+	            				<!-- <input class="form-control" type="text" name="name" th:value="*{name}" />   -->
+	            				<select class="form-control" id="category" name="category">
+     								<option value="" th:text="#{label.app.new.category0}" hidden></option>
+     								<option th:each="category : ${categories}" th:value="${category.value}" th:text="${category.value}"></option>
+								</select>
+	            				<div class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label" th:text="#{label.app.new.list4}"></label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="date" name="date" id="today"/>
+	            				<div class="text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
 	          				</div>
 	        			</div>
 	        			<div class="form-group row">
 	          				<label class="col-md-2 control-label" th:text="#{label.app.new.list2}"></label>
 	          				<div class="col-md-10">
-	            				<input class="form-control" type="text" name="price" th:value="*{price}"/>
-	            				<div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+	            				<input class="form-control" type="text" name="expenses" th:value="*{expenses}"/>
+	            				<div class="text-danger" th:if="${#fields.hasErrors('expenses')}" th:errors="*{expenses}"></div>
 	          				</div>
 	        			</div>
 	        			<div class="form-group row">
 	          				<label class="col-md-2 control-label" th:text="#{label.app.new.list3}"></label>
 	          				<div class="col-md-10">
-	            				<input class="form-control" type="text" name="vendor" th:value="*{vendor}" />
-	            				<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div>
+	            				<input class="form-control" type="text" name="memo" th:value="*{memo}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('memo')}" th:errors="*{memo}"></div>
 	          				</div>
 	        			</div>
 	        			<div class="form-group row">
 	          				<div class="offset-md-2 col-md-10">
-	            				<button class="btn btn-primary" th:text="#{label.app.new.buttion}"></button>
+	            				<button class="btn btn-primary" th:text="#{label.app.new.button}"></button>
 	          				</div>
 	        			</div>
 	      		</form>

@@ -1,6 +1,9 @@
 package com.example.app.controller;
 
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,12 +49,14 @@ public class ItemController {
 
 	@GetMapping("new")
 	public String newItem(@ModelAttribute("item") Item item, Model model) {
+		model.addAttribute("categories",getCategories());
 		return "new";
 	}
 
 	@GetMapping("{id}/edit")
 	public String edit(@PathVariable Long id, @ModelAttribute("item") Item item, Model model) {
 		model.addAttribute("item", itemService.findOne(id));
+		model.addAttribute("categories",getCategories());
 		return "edit";
 	}
 
@@ -68,6 +73,7 @@ public class ItemController {
 	@PutMapping("{id}")
 	public String update(@PathVariable Long id, @ModelAttribute("item") @Validated Item item, BindingResult result,
 			Model model) {
+		System.out.println(id);
 		if (result.hasErrors()) {
 			model.addAttribute("item", item);
 			return "edit";
@@ -83,4 +89,18 @@ public class ItemController {
 		itemService.delete(id);
 		return "redirect:/items";
 	}
+	
+	// カテゴリをセットする
+	private Map<String,String> getCategories(){
+	     Map<String, String> categoryMap = new LinkedHashMap<String, String>();
+	     categoryMap.put("1", "交際費");
+	     categoryMap.put("2", "食費");
+	     categoryMap.put("3", "交通費");
+	     categoryMap.put("4", "日用品");
+	     categoryMap.put("5", "光熱費");
+	     categoryMap.put("6", "通信費");
+	     categoryMap.put("7", "住宅費");
+	     categoryMap.put("9", "その他");
+	     return categoryMap;
+	 }   
 }

@@ -10,11 +10,11 @@
   </select>
 
   <insert id="save" useGeneratedKeys="true" keyProperty="id">
-    insert into item(name, price, vendor) values(#{name}, #{price}, #{vendor})
+    insert into item(category, date, expenses, memo) values(#{category}, #{date}, #{expenses}, #{memo})
   </insert>
 
   <update id="update">
-    update item set name=#{name}, price=#{price}, vendor=#{vendor} where id= #{id}
+    update item set category=#{category}, date=#{date}, expenses=#{expenses}, memo=#{memo} where id= #{id}
   </update>
 
   <delete id="delete">

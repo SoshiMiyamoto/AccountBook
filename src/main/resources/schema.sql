@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS `item` (
   `id`     bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name`   varchar(255),
-  `price`  real,
-  `vendor` varchar(255)
+  `category`   varchar(255),
+  `date` date,
+  `expenses`  real,
+  `memo` varchar(255)
 );
