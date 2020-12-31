@@ -18,7 +18,7 @@ public class Item {
 
 	@Min(value = 10, message = "10以上の数値を入力してください。")
 	@Max(value = 100000, message = "100000以下の数値を入力してください。")
-	private float expenses;
+	private int expenses;
 
 	@Size(max = 50, message = "ベーダー名は50文字を超えないでください。")
 	private String memo;
@@ -55,11 +55,11 @@ public class Item {
 		this.date = date;
 	}
 
-	public float getExpenses() {
+	public int getExpenses() {
 		return expenses;
 	}
 
-	public void setExpenses(float expenses) {
+	public void setExpenses(int expenses) {
 		this.expenses = expenses;
 	}
 

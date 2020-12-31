@@ -20,7 +20,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/items" th:text="#{label.app.top.header}"></a>
+				<a class="navbar-brand" href="/accountbook" th:text="#{label.app.top.header}"></a>
 			</div>
 		</div>
     </nav>
@@ -30,7 +30,7 @@
 	  				<h5 class="card-title" th:text="#{label.app.new.title}"></h5>
 	  			</div>
 				<div class="card-body">
-	      			<form th:method="post" th:action="@{/items}" th:object="${item}">
+	      			<form th:method="post" th:action="@{/accountbook}" th:object="${item}">
 	        			<div class="form-group row">
 	          				<label class="col-md-2 control-label" th:text="#{label.app.new.list1}"></label>
 	          				<div class="col-md-10">

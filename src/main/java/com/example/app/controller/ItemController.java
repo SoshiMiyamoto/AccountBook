@@ -22,7 +22,7 @@ import com.example.app.domain.Item;
 import com.example.app.service.ItemService;
 
 @Controller
-@RequestMapping("/items")
+@RequestMapping("/accountbook")
 public class ItemController {
 
 	@Autowired
@@ -42,7 +42,8 @@ public class ItemController {
 	}
 
 	@GetMapping("{id}")
-	public String show(@PathVariable Long id, Model model) {
+	public String show(@PathVariable 
+			Long id, Model model) {
 		model.addAttribute("item", itemService.findOne(id));
 		return "show";
 	}
@@ -66,7 +67,7 @@ public class ItemController {
 			return "new";
 		} else {
 			itemService.save(item);
-			return "redirect:/items";
+			return "redirect:/accountbook";
 		}
 	}
 
@@ -80,27 +81,27 @@ public class ItemController {
 		} else {
 			item.setId(id);
 			itemService.update(item);
-			return "redirect:/items";
+			return "redirect:/accountbook";
 		}
 	}
 
 	@DeleteMapping("{id}")
 	public String delete(@PathVariable Long id) {
 		itemService.delete(id);
-		return "redirect:/items";
+		return "redirect:/accountbook";
 	}
 	
 	// カテゴリをセットする
 	private Map<String,String> getCategories(){
 	     Map<String, String> categoryMap = new LinkedHashMap<String, String>();
-	     categoryMap.put("1", "交際費");
-	     categoryMap.put("2", "食費");
-	     categoryMap.put("3", "交通費");
-	     categoryMap.put("4", "日用品");
-	     categoryMap.put("5", "光熱費");
-	     categoryMap.put("6", "通信費");
-	     categoryMap.put("7", "住宅費");
-	     categoryMap.put("9", "その他");
+	     categoryMap.put("1", messageSource.getMessage("label.app.new.category1", new String[] {}, Locale.getDefault()));
+	     categoryMap.put("2", messageSource.getMessage("label.app.new.category2", new String[] {}, Locale.getDefault()));
+	     categoryMap.put("3", messageSource.getMessage("label.app.new.category3", new String[] {}, Locale.getDefault()));
+	     categoryMap.put("4", messageSource.getMessage("label.app.new.category4", new String[] {}, Locale.getDefault()));
+	     categoryMap.put("5", messageSource.getMessage("label.app.new.category5", new String[] {}, Locale.getDefault()));
+	     categoryMap.put("6", messageSource.getMessage("label.app.new.category6", new String[] {}, Locale.getDefault()));
+	     categoryMap.put("7", messageSource.getMessage("label.app.new.category7", new String[] {}, Locale.getDefault()));
+	     categoryMap.put("8", messageSource.getMessage("label.app.new.category8", new String[] {}, Locale.getDefault()));
 	     return categoryMap;
 	 }   
 }

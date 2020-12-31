@@ -10,7 +10,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/items"
+				<a class="navbar-brand" href="/accountbook"
 					th:text="#{label.app.top.header}"></a>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 				<h5 class="card-title" th:text="#{label.app.edit.title}"></h5>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/items/{id}(id=*{id})}" th:method="put"
+				<form th:action="@{/accountbook/{id}(id=*{id})}" th:method="put"
 					th:object="${item}">
 					<div class="form-group row">
 						<label class="col-md-2 control-label"
